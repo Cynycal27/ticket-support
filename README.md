@@ -1,6 +1,6 @@
 # ticket-support 
-'''// -------------------- Imports --------------------
-const { 
+    // -------------------- Imports --------------------
+    const { 
     Client, 
     GatewayIntentBits, 
     Partials, 
@@ -9,32 +9,32 @@ const {
     ButtonStyle, 
     EmbedBuilder, 
     PermissionsBitField 
-} = require("discord.js");
-require("dotenv").config();
+    } = require("discord.js");
+    require("dotenv").config();
 
-// -------------------- Create Client --------------------
-const client = new Client({
+    // -------------------- Create Client --------------------
+    const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent
     ],
     partials: [Partials.Channel]
-});
+    });
 
-// -------------------- When Bot is Ready --------------------
-client.once("ready", () => {
+    // -------------------- When Bot is Ready --------------------
+    client.once("ready", () => {
     console.log(`${client.user.tag} is online!`);
-});
+    });
 
-// -------------------- Ticket Setup Command --------------------
-client.on("messageCreate", async (message) => {
+    // -------------------- Ticket Setup Command --------------------
+    client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
     if (message.content.toLowerCase() === "!ticket-setup") {
         const embed = new EmbedBuilder()
             .setTitle("🎫 Support Tickets")
             .setDescription("Click the button below to create a ticket.")
-            .setColor("Blue");
+                    .setColor("Blue");
 
         const button = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
@@ -45,10 +45,10 @@ client.on("messageCreate", async (message) => {
 
         await message.channel.send({ embeds: [embed], components: [button] });
     }
-});
+    });
 
-// -------------------- Ticket Button Handler --------------------
-client.on("interactionCreate", async (interaction) => {
+    // -------------------- Ticket Button Handler --------------------
+    client.on("interactionCreate", async (interaction) => {
     if (!interaction.isButton()) return;
 
     if (interaction.customId === "create_ticket") {
@@ -97,7 +97,7 @@ client.on("interactionCreate", async (interaction) => {
     if (interaction.customId === "close_ticket") {
         await interaction.channel.delete();
     }
-});
+    });
 
-// -------------------- Login --------------------
-client.login(process.env.TOKEN);'''
+    // -------------------- Login --------------------
+    client.login(process.env.TOKEN);
