@@ -1,5 +1,5 @@
 # ticket-support 
-// -------------------- Imports --------------------
+'''// -------------------- Imports --------------------
 const { 
     Client, 
     GatewayIntentBits, 
@@ -100,4 +100,4 @@ client.on("interactionCreate", async (interaction) => {
 });
 
 // -------------------- Login --------------------
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN);'''
